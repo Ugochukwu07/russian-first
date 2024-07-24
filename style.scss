@@ -4,6 +4,8 @@ $color-sec: #969AF7;
 // Define breakpoints
 $mobile: 320px;
 $mobile-m: 375px;
+$laptop: 1024px;
+$tablet: 768px;
 
 // @import "./assets/scss/shapes.scss";
 
@@ -41,6 +43,18 @@ $mobile-m: 375px;
 
 @mixin mobileMedium {
   @media (min-width: $mobile-m) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: $laptop){
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet){
     @content;
   }
 }
@@ -101,8 +115,13 @@ header {
     background-size: cover;
     color: white;
     padding: 2rem 5.5rem;
+
     @include mobile{
         padding: .2rem .5rem;
+    }
+
+    @include laptop{
+        padding: 1.2rem 3.5rem;
     }
 
     &::after {
@@ -123,11 +142,22 @@ header {
         @include mobile{
             background-color: $color-primary !important;
         }
+        .navbar-brand{
+            @include laptop{
+                width: 110px;
+            }
+        }
         .nav-item {
+            // margin: auto .1rem;
             .nav-link {
                 color: white;
                 font-weight: 400;
                 font-size: 14px;
+
+                @include laptop{
+                    font-size: 13px;
+                    padding: .3rem !important;
+                }
 
                 &.active {
                     color: white;
@@ -147,6 +177,11 @@ header {
                 padding-top: 10px;
                 margin: auto;
             }
+
+            @include laptop{
+                margin-left: 1.3rem;
+                font-size: 13px;
+            }
             .phone-ic-bg {
                 display: flex;
                 background-color: white;
@@ -157,6 +192,10 @@ header {
                 @include justify-align-center();
                 margin-right: .3rem;
 
+                @include laptop{
+                    width: 30px;
+                    height: 30px;
+                }
                 .phone-ic {
                     @include justify-align-center()
                 }
@@ -183,11 +222,20 @@ header {
                     line-height: 30px;
                     font-size: 30px;
                 }
+                
+                @include laptop{
+                    font-size: 40px;
+                    line-height: 39px;
+                }
 
                 span {
                     font-size: 35px;
                     line-height: 31px;
                     color: $color-sec;
+                    @include laptop{
+                        font-size: 30px;
+                        line-height: 30px;
+                    }
                     @include mobile{
                         line-height: 21px;
                         font-size: 20px;
@@ -199,6 +247,9 @@ header {
                 font-weight: 400;
                 font-size: 15px;
                 color: $color-sec;
+                @include laptop{
+                    font-size: 14px;
+                }
                 @include mobile{
                     font-size: 14px;
                 }
@@ -209,6 +260,11 @@ header {
             position: relative;
             padding-top: 1.5rem !important;
             padding-bottom: 1.5rem !important;
+
+            @include laptop{
+                padding-top: 1.2rem !important;
+                padding-bottom: 1.2rem !important;
+            }
 
             &::after {
                 position: absolute;
@@ -250,6 +306,9 @@ header {
         .cta-form {
             width: 65%;
             border: none;
+            @include laptop{
+                width: 75%;
+            }
             @include mobile{
                 margin-top: 2rem;
                 width: 100%;
@@ -264,6 +323,9 @@ header {
                 text-align: center;
                 padding: 2.1rem 1rem .1rem 4rem;
                 color: white;
+                @include laptop{
+                    padding: 1.8rem .8rem .1rem 3.6rem;
+                }
             }
 
             .card-body {
@@ -367,8 +429,11 @@ header {
     }
 
     .boxes {
-        .col-4 {
+        .col-12 {
             padding: .9rem 1rem;
+            @include laptop{
+                margin-bottom: 1.2rem;
+            }
         }
 
         .box {
@@ -409,6 +474,10 @@ header {
     padding: 2.5rem 5rem;
     margin-top: 3rem;
     background-image: linear-gradient(transparent, $color-primary);
+    
+    @include laptop{
+        padding: 2.5rem 3.4rem;
+    }
 
     @include mobile{
         padding: 1.5rem .2rem;
@@ -482,9 +551,16 @@ header {
     background-position: center;
     background-size: cover;
     margin-bottom: 5rem;
+    padding: 2rem 4rem;
+
     @include mobile{
         margin-bottom: 2rem;
     }
+
+    @include laptop{
+        padding: 1.5rem 3.1rem
+    }
+
     .title-box {
         @include title-h1();
     }
@@ -703,6 +779,15 @@ footer{
     @include mobile{
         padding: 2rem 3rem;
     }
+    @include laptop{
+        padding: 2rem 2.5rem;
+    }
+    // a{
+    //     @include laptop{
+    //         display: inline-block;
+    //         width: 80px;
+    //     }
+    // }
     ul{
         display: flex;
         list-style: none;
@@ -717,6 +802,11 @@ footer{
             color: white;
             font-size: 13px;
             font-weight: 500;
+
+            @include laptop{
+                font-size: 13px;
+                margin: 0rem .2rem;
+            }
         }
     }
     a.btn{
@@ -727,6 +817,10 @@ footer{
         border-radius: 10px;
         width: 100%;
         border: 2px solid #969AF7;
+
+        @include laptop{
+            font-size: 13px;
+        }
         @include mobile{
             padding-left: 2rem;
             font-size: 13px;
