@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    /* background-color: rgb(255, 195, 195); */
+}
+
+body, html{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header{
+    position: relative;
+    background-image: url('./img/Mask\ grouphero-bg.png');
+    /* height: 900px; */
+    padding: 0rem 5rem;
+}
+
+header::after{
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; right: 0; left: -100%;
+    background-image: url('./img/Vectorhero-bg.png');
+    background-position: center;
+    background-size: contain;
+    z-index: -1;
+}
+
+
+
+.year .box{
+    background-image: url('./img/Mask\ groupicon-bg.png');
+    background-size: cover;
+}
